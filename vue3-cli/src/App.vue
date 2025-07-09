@@ -1,9 +1,7 @@
 <template>
-  <AppHeader></AppHeader>
-  <div>
-    {{ message }}
-  </div>
-  <button @click="showAlert">click</button>
+  <AppHeader v-bind:appTitle="message"
+  v-on:change="changeMessage">
+  </AppHeader>
 </template>
 
 <script>
@@ -15,12 +13,13 @@ import AppHeader from './components/AppHeader.vue';
     },
     data() {
       return {
-        message: 'hi'
+        message: '앱 헤더 컴포넌트'
       }
     },
     methods: {
-      showAlert(){
-        alert('heyji');
+      changeMessage(){
+        this.message = '변경됨';
+        
       }
     }
   }

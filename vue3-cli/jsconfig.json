@@ -1,19 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
-    "baseUrl": "./",
+    "target": "esnext",                     // 최신 브라우저용 코드로 컴파일
+    "module": "esnext",                     // ESM 사용 (Vite 기본값)
     "moduleResolution": "node",
+    "strict": true,                         // 타입 안정성 강화
+    "jsx": "preserve",                      // JSX 유지 (Vue에서는 필요할 수 있음)
+    "baseUrl": ".",                         // 경로 alias 설정의 기준
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]                      // "@/components/..." 등 사용 가능
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
-  }
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "skipLibCheck": true,                   // 일부 외부 라이브러리 타입 오류 무시
+    "allowSyntheticDefaultImports": true,   // default import 사용 허용
+    "resolveJsonModule": true,              // JSON import 가능
+    "esModuleInterop": true                 // CommonJS ↔ ESM 호환성 향상
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["node_modules"]
 }
